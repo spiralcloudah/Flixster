@@ -19,6 +19,7 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
@@ -104,11 +105,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     // create the viewholder as a static inner class
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        // track view objects
-        ImageView ivPosterImage;
-        ImageView ivBackdropImage;
-        TextView tvTitle;
-        TextView tvOverview;
+        // bind view objects
+        @BindView(R.id.ivPosterImage) ImageView ivPosterImage;
+        @BindView(R.id.ivBackdropImage) ImageView ivBackdropImage;
+        @BindView(R.id.tvTitle) TextView tvTitle;
+        @BindView(R.id.tvOverview) TextView tvOverview;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

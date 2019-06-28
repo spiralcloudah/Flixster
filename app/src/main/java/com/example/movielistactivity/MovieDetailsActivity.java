@@ -10,27 +10,26 @@ import com.example.movielistactivity.models.Movie;
 
 import org.parceler.Parcels;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MovieDetailsActivity extends AppCompatActivity {
 
     // the movie to display
     Movie movie;
 
-    // the view objects
-    TextView tvTitle;
-    TextView tvOverview;
-    RatingBar rbVoteAverage;
+    // bind objects to id
+    @BindView(R.id.tvTitle) TextView tvTitle;
+    @BindView(R.id.tvOverview) TextView tvOverview;
+    @BindView(R.id.rbVoteAverage) RatingBar rbVoteAverage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
 
-        // resolve the view objects
-        tvTitle = (TextView) findViewById(R.id.tvTitle);
-        tvOverview = (TextView) findViewById(R.id.tvOverview);
-        rbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
-
         // unwrap the movie passed in via intent, using its simple name as a key
+        ButterKnife.bind(this);
         movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));
         Log.d("MovieDetailsActivity", String.format("Showing details for '%s'",
                 movie.getTitle()));
